@@ -7,6 +7,7 @@ export interface User {
 }
 
 export interface Patient {
+<<<<<<< HEAD
     id?: number;
     firstName: string;
     lastName: string;
@@ -27,6 +28,16 @@ export interface Patient {
 // Separate type for registration form data (includes password)
 export interface PatientRegistrationData extends Omit<Patient, 'id' | 'registrationDate' | 'active'> {
     password: string;
+=======
+    id: number;
+    email: string;
+    firstName: string;
+    lastName: string;
+    dateOfBirth: string;
+    gender: string;
+    phoneNumber: string;
+    address: string;
+>>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
 }
 
 export interface HealthRecord {
@@ -45,6 +56,10 @@ export interface HealthRecord {
 
 export interface AuthResponse {
     token: string;
+<<<<<<< HEAD
     user?: User;
     patient?: Patient;
+=======
+    user: User;
+>>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
 } 
