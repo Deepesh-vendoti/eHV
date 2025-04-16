@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
+=======
+>>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,6 +22,7 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+<<<<<<< HEAD
 }
 
 @layer base {
@@ -208,4 +212,6 @@ code {
   body {
     @apply bg-background text-foreground;
   }
+=======
+>>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
 } 

@@ -4,6 +4,7 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   theme: {
+<<<<<<< HEAD
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -46,6 +47,9 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
     },
+=======
+    extend: {},
+>>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
   },
   plugins: [],
 } 

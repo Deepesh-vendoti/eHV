@@ -23,8 +23,11 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
 
     public AuthResponse login(PatientAuthRequest request) {
+<<<<<<< HEAD
         System.out.println("🔐 Attempting login for: " + request.getEmail());
 
+=======
+>>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
@@ -36,6 +39,7 @@ public class AuthService {
     }
 
     public AuthResponse register(Patient patient) {
+<<<<<<< HEAD
         System.out.println("📥 Registration request for: " + patient.getEmail());
 
         try {
@@ -70,3 +74,23 @@ public class AuthService {
         }
     }
 }
+=======
+        if (patientRepository.existsByEmail(patient.getEmail())) {
+            throw new RuntimeException("Email already registered");
+        }
+
+        patient.setPassword(passwordEncoder.encode(patient.getPassword()));
+        patient.setActive(true);
+        patientRepository.save(patient);
+
+        Authentication authentication = authenticationManager.authenticate(
+            new UsernamePasswordAuthenticationToken(patient.getEmail(), patient.getPassword())
+        );
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+        String token = jwtTokenProvider.generateToken(authentication);
+
+        return new AuthResponse(token);
+    }
+} 
+>>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
