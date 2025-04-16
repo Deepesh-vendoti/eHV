@@ -1,0 +1,36 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+
+ :: Spring Boot ::               (v3.3.10)
+
+2025-04-16T21:52:02.997+05:30  INFO 19971 --- [ehv] [           main] com.ehv.EhvApplication                   : Starting EhvApplication v1.0.0 using Java 17.0.15 with PID 19971 (/Users/drg/Projects/ehv/target/ehv-1.0.0.jar started by drg in /Users/drg/Projects/ehv)
+2025-04-16T21:52:02.999+05:30  INFO 19971 --- [ehv] [           main] com.ehv.EhvApplication                   : No active profile set, falling back to 1 default profile: "default"
+2025-04-16T21:52:03.436+05:30  INFO 19971 --- [ehv] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-04-16T21:52:03.472+05:30  INFO 19971 --- [ehv] [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 3 JPA repository interfaces.
+2025-04-16T21:52:03.762+05:30  INFO 19971 --- [ehv] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2025-04-16T21:52:03.769+05:30  INFO 19971 --- [ehv] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2025-04-16T21:52:03.770+05:30  INFO 19971 --- [ehv] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.39]
+2025-04-16T21:52:03.786+05:30  INFO 19971 --- [ehv] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2025-04-16T21:52:03.787+05:30  INFO 19971 --- [ehv] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 762 ms
+2025-04-16T21:52:03.860+05:30  INFO 19971 --- [ehv] [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-04-16T21:52:03.896+05:30  INFO 19971 --- [ehv] [           main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2025-04-16T21:52:03.929+05:30  INFO 19971 --- [ehv] [           main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2025-04-16T21:52:04.100+05:30  INFO 19971 --- [ehv] [           main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-04-16T21:52:04.115+05:30  INFO 19971 --- [ehv] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2025-04-16T21:52:04.199+05:30  INFO 19971 --- [ehv] [           main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@184afb78
+2025-04-16T21:52:04.200+05:30  INFO 19971 --- [ehv] [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2025-04-16T21:52:04.649+05:30  INFO 19971 --- [ehv] [           main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-04-16T21:52:04.679+05:30  INFO 19971 --- [ehv] [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-04-16T21:52:04.892+05:30  INFO 19971 --- [ehv] [           main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-04-16T21:52:04.892+05:30  WARN 19971 --- [ehv] [           main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2025-04-16T21:52:04.909+05:30  WARN 19971 --- [ehv] [           main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-04-16T21:52:05.143+05:30  INFO 19971 --- [ehv] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2025-04-16T21:52:05.149+05:30  INFO 19971 --- [ehv] [           main] com.ehv.EhvApplication                   : Started EhvApplication in 2.392 seconds (process running for 2.752)
+2025-04-16T21:53:40.682+05:30  INFO 19971 --- [ehv] [ionShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-04-16T21:53:40.687+05:30  INFO 19971 --- [ehv] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2025-04-16T21:53:40.689+05:30  INFO 19971 --- [ehv] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
