@@ -33,6 +33,7 @@ const App: React.FC = () => {
   );
 };
 
+<<<<<<< HEAD
 export default App;
 =======
 import Register from './pages/Register';
@@ -67,3 +68,6 @@ function App() {
 
 export default App; 
 >>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
+=======
+export default App;
+>>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)

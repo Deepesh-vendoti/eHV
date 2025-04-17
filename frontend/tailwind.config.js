@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -47,9 +50,12 @@ module.exports = {
         sm: "calc(var(--radius) - 4px)",
       },
     },
+<<<<<<< HEAD
 =======
     extend: {},
 >>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
+=======
+>>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
   },
   plugins: [],
 } 

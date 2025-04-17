@@ -1,14 +1,19 @@
 import React, { useState } from "react";
+<<<<<<< HEAD
 import {
   Dialog,
   DialogContent,
   DialogHeader,
   DialogTitle,
 } from "./ui/dialog";
+=======
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
+>>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
+<<<<<<< HEAD
 import {
   Select,
   SelectContent,
@@ -94,10 +99,31 @@ const UploadReportModal = () => {
       setError(null);
     }
   };
+=======
+
+interface ReportForm {
+  title: string;
+  date: string;
+  notes: string;
+  file: File | null;
+}
+
+const UploadReportModal: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [formData, setFormData] = useState<ReportForm>({
+    title: "",
+    date: "",
+    notes: "",
+    file: null
+  });
+
+  const [error, setError] = useState("");
+>>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+<<<<<<< HEAD
     setError(null); // Clear error when user makes changes
   };
 
@@ -119,10 +145,32 @@ const UploadReportModal = () => {
     // Clear error if both file and record type are valid
     setError(null);
     return true;
+=======
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+    if (file) {
+      // Validate file type
+      const validTypes = ["application/pdf", "image/jpeg", "image/png"];
+      if (!validTypes.includes(file.type)) {
+        setError("Only PDF, JPG, or PNG files allowed");
+        return;
+      }
+      // Validate file size (max 5MB)
+      if (file.size > 5 * 1024 * 1024) {
+        setError("Max file size is 5MB");
+        return;
+      }
+    }
+    setError("");
+    setFormData(prev => ({ ...prev, file }));
+>>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+<<<<<<< HEAD
     if (!validateForm()) return;
 
     setIsSubmitting(true);
@@ -167,11 +215,32 @@ const UploadReportModal = () => {
       });
     } finally {
       setIsSubmitting(false);
+=======
+    if (!formData.title || !formData.date || !formData.file) {
+      setError("Please fill all required fields and choose a file.");
+      return;
+    }
+    try {
+      // TODO: Replace with actual API call
+      console.log("Submitting Report:", formData);
+      // Reset form after successful submission
+      setFormData({
+        title: "",
+        date: "",
+        notes: "",
+        file: null
+      });
+      setError("");
+    } catch (error) {
+      console.error("Error uploading report:", error);
+      setError("Failed to upload report. Please try again.");
+>>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
     }
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
+<<<<<<< HEAD
       <Button 
         onClick={() => setIsOpen(true)} 
         variant="outline" 
@@ -239,9 +308,40 @@ const UploadReportModal = () => {
             </Button>
           </div>
         </form>
+=======
+      <DialogTrigger asChild>
+        <Button variant="outline" className="w-full">
+          📄 Upload Report
+        </Button>
+      </DialogTrigger>
+      <DialogContent>
+        <DialogHeader>
+          <DialogTitle>Upload Medical Report</DialogTitle>
+        </DialogHeader>
+        <div className="space-y-4">
+          <div>
+            <Label htmlFor="file">Select File</Label>
+            <Input id="file" type="file" accept=".pdf,.jpg,.jpeg,.png" onChange={handleFileChange} />
+          </div>
+          <div>
+            <Label htmlFor="description">Description</Label>
+            <Textarea id="description" placeholder="Report description..." />
+          </div>
+          <div className="flex justify-end gap-2">
+            <Button variant="outline" onClick={() => setIsOpen(false)}>
+              Cancel
+            </Button>
+            <Button onClick={handleSubmit}>Upload</Button>
+          </div>
+        </div>
+>>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
       </DialogContent>
     </Dialog>
   );
 };
 
+<<<<<<< HEAD
 export default UploadReportModal;
+=======
+export default UploadReportModal; 
+>>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)

@@ -31,7 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
-<<<<<<< HEAD
 node_modules
 node_modules
 node_modules
@@ -41,5 +40,38 @@ node_modules
 node_modules/
 target/
 .DS_Store
-=======
->>>>>>> 7495d3c7 (feat: Initialized eHV project with separated FE/BE structure and core functionalities)
+
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+
+# Production
+build/
+dist/
+
+# Cache and logs
+.cache/
+*.log
+frontend/node_modules/.cache/
+**/node_modules/.cache/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
