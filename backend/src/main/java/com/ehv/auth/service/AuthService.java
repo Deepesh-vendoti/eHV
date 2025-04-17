@@ -23,6 +23,8 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
 
     public AuthResponse login(PatientAuthRequest request) {
+        System.out.println("🔐 Attempting login for: " + request.getEmail());
+
         Authentication authentication = authenticationManager.authenticate(
             new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
         );
@@ -34,21 +36,37 @@ public class AuthService {
     }
 
     public AuthResponse register(Patient patient) {
-        if (patientRepository.existsByEmail(patient.getEmail())) {
-            throw new RuntimeException("Email already registered");
+        System.out.println("📥 Registration request for: " + patient.getEmail());
+
+        try {
+            if (patientRepository.existsByEmail(patient.getEmail())) {
+                System.out.println("⚠️ Email already registered: " + patient.getEmail());
+                throw new RuntimeException("Email already registered");
+            }
+
+            // ✅ Hash password before storing
+            String rawPassword = patient.getPassword();
+            patient.setPassword(passwordEncoder.encode(rawPassword));
+            patient.setActive(true);
+
+            // ✅ Save patient
+            Patient savedPatient = patientRepository.save(patient);
+            System.out.println("✅ Patient saved: " + savedPatient.getEmail());
+
+            // ✅ Authenticate using raw password
+            Authentication authentication = authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(patient.getEmail(), rawPassword)
+            );
+
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            String token = jwtTokenProvider.generateToken(authentication);
+
+            return new AuthResponse(token);
+
+        } catch (Exception e) {
+            System.out.println("❌ Registration failed with error: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException("Registration failed. Please check logs for details.");
         }
-
-        patient.setPassword(passwordEncoder.encode(patient.getPassword()));
-        patient.setActive(true);
-        patientRepository.save(patient);
-
-        Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(patient.getEmail(), patient.getPassword())
-        );
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        String token = jwtTokenProvider.generateToken(authentication);
-
-        return new AuthResponse(token);
     }
-} 
+}
