@@ -31,15 +31,6 @@ build/
 
 ### VS Code ###
 .vscode/
-node_modules
-node_modules
-node_modules
-node_modules
-node_modules
-node_modules
-node_modules/
-target/
-.DS_Store
 
 # Dependencies
 node_modules/
