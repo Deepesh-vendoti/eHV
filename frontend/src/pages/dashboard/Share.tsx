@@ -1,15 +1,11 @@
-import React from "react";
-import { Card, CardContent } from "../../components/ui/card";
+import React from 'react';
+import ShareableReportContainer from '../../components/ui/ShareableReportContainer';
 
-const Share: React.FC = () => {
+export default function Share() {
   return (
-    <Card className="p-6 text-center">
-      <CardContent>
-        <h2 className="text-xl font-semibold mb-2">🤝 Share Records</h2>
-        <p className="text-gray-600">Coming soon – securely share your medical records with healthcare providers.</p>
-      </CardContent>
-    </Card>
+    <div>
+      <h1 className="text-2xl font-semibold mb-6">Share Health Records</h1>
+      <ShareableReportContainer />
+    </div>
   );
-};
-
-export default Share;
+}

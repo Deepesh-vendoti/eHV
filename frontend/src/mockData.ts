@@ -34,4 +34,37 @@ export const mockActivities: Activity[] = [
     description: 'Deleted incorrect weight entry',
     userAvatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=Felix'
   }
+];
+
+export const categories = ['Cardiac Health', 'Pregnancy Health', 'Lung Health', 'Metabolic Health'];
+
+export const mockRecords = [
+  {
+    id: '1',
+    category: 'Cardiac Health',
+    type: 'Blood Pressure',
+    date: '2023-11-01',
+    source: 'Self-entered',
+  },
+  {
+    id: '2',
+    category: 'Pregnancy Health',
+    type: 'Ultrasound',
+    date: '2023-08-15',
+    source: 'Upload',
+  },
+  {
+    id: '3',
+    category: 'Lung Health',
+    type: 'CT Scan',
+    date: '2023-10-01',
+    source: 'Hospital',
+  },
+  {
+    id: '4',
+    category: 'Metabolic Health',
+    type: 'A1C Test',
+    date: '2023-09-10',
+    source: 'Self-entered',
+  },
 ]; 
