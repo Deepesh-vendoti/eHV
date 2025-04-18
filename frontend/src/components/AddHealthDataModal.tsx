@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-<<<<<<< HEAD
 import {
   Dialog,
   DialogContent,
@@ -31,43 +30,6 @@ export function AddHealthDataModal() {
   });
   const [errors, setErrors] = useState<Partial<Record<keyof HealthDataForm, string>>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-=======
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { Textarea } from "./ui/textarea";
-
-interface HealthDataForm {
-  weight: string;
-  height: string;
-  bloodPressure: string;
-  bloodSugar: string;
-  notes: string;
-}
-
-const AddHealthDataModal: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState<HealthDataForm>({
-    weight: "",
-    height: "",
-    bloodPressure: "",
-    bloodSugar: "",
-    notes: ""
-  });
-
-  const [errors, setErrors] = useState<Partial<HealthDataForm>>({});
-
-  const validateForm = (): boolean => {
-    const newErrors: Partial<HealthDataForm> = {};
-    
-    if (!formData.weight) newErrors.weight = "Weight is required";
-    if (!formData.height) newErrors.height = "Height is required";
-    if (!formData.bloodPressure) newErrors.bloodPressure = "Blood Pressure is required";
-    
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
->>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -78,7 +40,6 @@ const AddHealthDataModal: React.FC = () => {
     }
   };
 
-<<<<<<< HEAD
   const validateForm = () => {
     const newErrors: Partial<Record<keyof HealthDataForm, string>> = {};
     const hasAny = formData.bloodPressure || formData.bloodSugar || formData.weight;
@@ -172,32 +133,11 @@ const AddHealthDataModal: React.FC = () => {
       });
     } finally {
       setIsSubmitting(false);
-=======
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!validateForm()) return;
-
-    try {
-      // TODO: Replace with actual API call
-      console.log("Submitting Health Data:", formData);
-      // Reset form after successful submission
-      setFormData({
-        weight: "",
-        height: "",
-        bloodPressure: "",
-        bloodSugar: "",
-        notes: ""
-      });
-    } catch (error) {
-      console.error("Error submitting health data:", error);
->>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
     }
   };
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-<<<<<<< HEAD
       <Button 
         onClick={() => setIsOpen(true)} 
         className="w-full h-10 text-lg"
@@ -276,40 +216,3 @@ const AddHealthDataModal: React.FC = () => {
 }
 
 export default AddHealthDataModal;
-=======
-      <DialogTrigger asChild>
-        <Button variant="outline" className="w-full">
-          ➕ Add Health Data
-        </Button>
-      </DialogTrigger>
-      <DialogContent>
-        <DialogHeader>
-          <DialogTitle>Add Health Data</DialogTitle>
-        </DialogHeader>
-        <div className="space-y-4">
-          <div>
-            <Input placeholder="Blood Pressure (e.g. 120/80)" />
-          </div>
-          <div>
-            <Input placeholder="Blood Sugar Level (mg/dL)" />
-          </div>
-          <div>
-            <Input placeholder="Weight (kg)" />
-          </div>
-          <div>
-            <Textarea placeholder="Additional Notes" />
-          </div>
-          <div className="flex justify-end gap-2">
-            <Button variant="outline" onClick={() => setIsOpen(false)}>
-              Cancel
-            </Button>
-            <Button onClick={() => setIsOpen(false)}>Save</Button>
-          </div>
-        </div>
-      </DialogContent>
-    </Dialog>
-  );
-};
-
-export default AddHealthDataModal; 
->>>>>>> c5fbe063 (Version with Store functioning at FE and APIs as theye were already there)
