@@ -41,25 +41,25 @@ const Dashboard = () => {
       icon: "📝",
       title: "Store",
       description: "Upload documents or enter health data manually",
-      onClick: () => navigate('/upload')
+      onClick: () => navigate('/dashboard/store')
     },
     {
       icon: "🗂",
       title: "Organize",
       description: "View and organize your health records",
-      onClick: () => navigate('/records')
+      onClick: () => navigate('/dashboard/organize')
     },
     {
       icon: "📊",
       title: "Analyze",
       description: "View trends and health summaries",
-      onClick: () => navigate('/analytics')
+      onClick: () => navigate('/dashboard/analyze')
     },
     {
       icon: "📤",
       title: "Share",
       description: "Securely share records with healthcare providers",
-      onClick: () => navigate('/share')
+      onClick: () => navigate('/dashboard/share')
     }
   ];
 

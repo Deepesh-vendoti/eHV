@@ -25,8 +25,19 @@ public class AuthService {
     public AuthResponse login(PatientAuthRequest request) {
         System.out.println("🔐 Attempting login for: " + request.getEmail());
 
-        Authentication authentication = authenticationManager.authenticate(
-            new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
+        // Find the patient
+        Patient patient = patientRepository.findByEmail(request.getEmail())
+            .orElseThrow(() -> new RuntimeException("User not found"));
+
+        // Direct password comparison
+        if (!request.getPassword().equals(patient.getPassword())) {
+            throw new RuntimeException("Invalid credentials");
+        }
+
+        // Create authentication token
+        Authentication authentication = new UsernamePasswordAuthenticationToken(
+            request.getEmail(),
+            request.getPassword()
         );
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -44,18 +55,19 @@ public class AuthService {
                 throw new RuntimeException("Email already registered");
             }
 
-            // ✅ Hash password before storing
+            // Store password as plain text
             String rawPassword = patient.getPassword();
-            patient.setPassword(passwordEncoder.encode(rawPassword));
+            patient.setPassword(rawPassword); // No encoding
             patient.setActive(true);
 
-            // ✅ Save patient
+            // Save patient
             Patient savedPatient = patientRepository.save(patient);
             System.out.println("✅ Patient saved: " + savedPatient.getEmail());
 
-            // ✅ Authenticate using raw password
-            Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(patient.getEmail(), rawPassword)
+            // Create authentication token
+            Authentication authentication = new UsernamePasswordAuthenticationToken(
+                patient.getEmail(),
+                rawPassword
             );
 
             SecurityContextHolder.getContext().setAuthentication(authentication);

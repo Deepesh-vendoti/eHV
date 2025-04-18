@@ -1,15 +1,11 @@
-import React from "react";
-import { Card, CardContent } from "../../components/ui/card";
+import React from 'react';
+import OrganizeDashboard from '../../components/ui/OrganizeDashboard';
 
-const Organize: React.FC = () => {
+export default function Organize() {
   return (
-    <Card className="p-6 text-center">
-      <CardContent>
-        <h2 className="text-xl font-semibold mb-2">📁 Organize Records</h2>
-        <p className="text-gray-600">Coming soon – organize your medical records by type and date.</p>
-      </CardContent>
-    </Card>
+    <>
+      <h1 className="text-2xl font-semibold mb-6">Organize Health Records</h1>
+      <OrganizeDashboard />
+    </>
   );
-};
-
-export default Organize;
+}

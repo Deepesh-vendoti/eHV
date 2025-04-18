@@ -87,77 +87,80 @@ const Store: React.FC = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-6 space-y-6">
-      <div className="grid gap-6 md:grid-cols-2">
-        {/* Health Metrics Card */}
-        <Card className="shadow-sm">
-          <CardHeader>
-            <CardTitle>Track Health Metrics</CardTitle>
-            <CardDescription>
-              Record your daily health measurements including blood pressure,
-              blood sugar, and weight to monitor your health progress.
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <AddHealthDataModal />
-          </CardContent>
-        </Card>
+    <>
+      <h1 className="text-2xl font-semibold mb-6">Store Health Records</h1>
+      <div className="container mx-auto space-y-6">
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* Health Metrics Card */}
+          <Card className="shadow-sm">
+            <CardHeader>
+              <CardTitle>Track Health Metrics</CardTitle>
+              <CardDescription>
+                Record your daily health measurements including blood pressure,
+                blood sugar, and weight to monitor your health progress.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <AddHealthDataModal />
+            </CardContent>
+          </Card>
 
-        {/* Medical Reports Card */}
+          {/* Medical Reports Card */}
+          <Card className="shadow-sm">
+            <CardHeader>
+              <CardTitle>Upload Medical Reports</CardTitle>
+              <CardDescription>
+                Store your medical documents, lab reports, prescriptions, and
+                other health-related files securely for easy access.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <UploadReportModal />
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Recent Activity Card */}
         <Card className="shadow-sm">
           <CardHeader>
-            <CardTitle>Upload Medical Reports</CardTitle>
+            <CardTitle>Recent Activity</CardTitle>
             <CardDescription>
-              Store your medical documents, lab reports, prescriptions, and
-              other health-related files securely for easy access.
+              Your latest health records and measurements
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <UploadReportModal />
+            {isLoading ? (
+              <p className="text-sm text-muted-foreground">Loading recent activity...</p>
+            ) : error ? (
+              <p className="text-sm text-red-500">{error}</p>
+            ) : recentActivity.length === 0 ? (
+              <p className="text-sm text-muted-foreground">No recent activity to display.</p>
+            ) : (
+              <div className="space-y-4">
+                {recentActivity.map((activity, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-between items-center py-2 border-b last:border-0"
+                  >
+                    <div className="flex items-center gap-3">
+                      <span className="text-xl">
+                        {activity.type === 'health' ? '🩺' : '📄'}
+                      </span>
+                      <span className="text-sm font-medium">
+                        {formatActivityItem(activity)}
+                      </span>
+                    </div>
+                    <span className="text-sm text-muted-foreground">
+                      {formatDate(activity.timestamp)}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
           </CardContent>
         </Card>
       </div>
-
-      {/* Recent Activity Card */}
-      <Card className="shadow-sm">
-        <CardHeader>
-          <CardTitle>Recent Activity</CardTitle>
-          <CardDescription>
-            Your latest health records and measurements
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          {isLoading ? (
-            <p className="text-sm text-muted-foreground">Loading recent activity...</p>
-          ) : error ? (
-            <p className="text-sm text-red-500">{error}</p>
-          ) : recentActivity.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No recent activity to display.</p>
-          ) : (
-            <div className="space-y-4">
-              {recentActivity.map((activity, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between items-center py-2 border-b last:border-0"
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-xl">
-                      {activity.type === 'health' ? '🩺' : '📄'}
-                    </span>
-                    <span className="text-sm font-medium">
-                      {formatActivityItem(activity)}
-                    </span>
-                  </div>
-                  <span className="text-sm text-muted-foreground">
-                    {formatDate(activity.timestamp)}
-                  </span>
-                </div>
-              ))}
-            </div>
-          )}
-        </CardContent>
-      </Card>
-    </div>
+    </>
   );
 };
 
